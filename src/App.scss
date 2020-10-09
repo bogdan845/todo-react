@@ -1,38 +1,302 @@
-.App {
-  text-align: center;
+* {
+    margin: 0;
+    box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/*===============================
+    COLORS
+===============================*/
+
+
+$turquoise: #00CED1;
+$red: #F08080;
+$blue: #1E90FF;
+$background: #F8F8FF;
+$text: #778899;
+
+
+/*===============================
+    APP
+===============================*/
+
+
+.app {
+    width: 95%;
+    max-width: 400px;
+    margin: 30px auto 0;
+    padding: 30px 15px 30px;
+    color: $text;
+    border-radius: 5px;
+    background: $background;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+
+/*===============================
+    NOTIFICATION
+===============================*/
+
+
+.notification {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    color: #fff;
+    padding: 15px;
+    text-align: center;
+    text-transform: capitalize;
+
+
+    // success message
+    &.success {
+        background: $turquoise;
+    }
+
+
+    // warning message
+    &.warning {
+        background: $red;
+    }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+
+/*===============================
+    DATE
+===============================*/
+
+
+.date {
+    margin-bottom: 40px;
+    color: #00CED1;
+    font-style: italic;
+
+
+    // day
+    &__day {
+        margin-bottom: 5px;
+    }
 }
 
-.App-link {
-  color: #61dafb;
+
+/*===============================
+    FORM
+===============================*/
+
+
+.form {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    color: $text;
+
+
+    // wrap for input/label
+    &__group {
+        width: 80%;
+        position: relative;
+    }
+
+
+    // label
+    &__group label {
+        position: absolute;
+        top: 7px;
+        left: 15px;
+        transition: 0.15s linear;
+        opacity: 0;
+        z-index: -1;
+    }
+
+
+    // input
+    &__group input[type="text"] {
+        width: 100%;
+        padding: 10px 15px;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        border-bottom: 2px solid rgba(119,136,153, 0.25);
+        outline: none;
+        font-size: 16px;
+        display: block;
+        color: $text;
+        background: transparent;
+        transition: 0.15s linear;
+
+
+        // input border
+        &:focus {
+            border-bottom-color: $text;
+        }
+
+
+        // placeholder transition
+        &::placeholder {
+            opacity: 0.8;
+            transition: 0.15s linear;
+        }
+
+
+        // placeholder when focus on input
+        &:focus::placeholder {
+            opacity: 0;
+        }
+
+
+        // label when focus on input
+        &:focus ~ label {
+            top: -20px;
+            font-size: 12px;
+            opacity: 0.8;
+            z-index: 10;
+        }
+
+
+        // label when placeholder is not displayed
+        &:not(:placeholder-shown) ~ label {
+            top: -20px;
+            font-size: 12px;
+            opacity: 0.8;
+            z-index: 10;
+        }
+    }
+
+
+    // submit button
+    &__submit {
+        outline: none;
+        border: none;
+        background-color: $text;
+        color: $background;
+        padding: 9px 5px;
+        font-size: 22px;
+        line-height: 0;
+        position: relative;
+        text-transform: capitalize;
+        cursor: pointer;
+        transition: 0.15s linear;
+        width: 15%;
+        text-align: center;
+        border-radius: 5px;
+
+        &:hover {
+            opacity: 0.8;
+        }
+    }
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+/*===============================
+    TODOS
+===============================*/
+
+
+.todos {
+    margin: 50px 0 30px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+
+
+    // item
+    &__item {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        padding: 10px;
+        border-radius: 5px;
+        background-color: #F0F0F7;
+        animation: show 0.25s linear;
+    }
+
+
+    // completed item
+    &__item.completed {
+        opacity: 0.5;
+    }
+
+
+    // completed text inside item
+    &__text.completed {
+        text-decoration: line-through;
+    }
+
+
+    // item checkbox
+    &__item input[type="checkbox"] {
+        margin-top: 3px;
+    }
+
+
+    // item text
+    &__text {
+        padding-left: 15px;
+    }
+
+
+    // item buttons
+    &__item-btns {
+        margin-left: auto;
+        flex-shrink: 0;
+        padding-left: 20px;
+    }
+
+
+    // item btn default
+    &__btn {
+        border: none;
+        outline: none;
+        padding: 2px 5px;
+        cursor: pointer;
+        color: #fff;
+        font-size: 16px;
+        background: transparent;
+        transition: 0.15s linear;
+
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+
+
+    // btn edit
+    &__btn-edit {
+        color: $blue;
+        margin-right: 5px;
+    }
+
+
+    // btn remove
+    &__btn-remove {
+        color: $red;
+        margin-left: 5px;
+    }
+}
+
+
+/*===============================
+    BTN CLEAR
+===============================*/
+
+
+.btn-clear {
+    background: $text;
+    outline: none;
+    font-size: 20px;
+    padding: 9px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    max-width: 130px;
+    margin: 0 auto;
+    transition: 0.15s linear;
+    color: $background;
+
+    &:hover {
+        opacity: 0.8;
+    }
 }

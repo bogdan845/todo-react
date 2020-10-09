@@ -1,9 +1,9 @@
 import React from "react";
 
-const Notification = ({status, text}) => {
+const Alert = ({status, message}) => {
     return (
-        <div className={`notification status-${status}`}>{text}</div>
+        <div className={`notification ${status}`}>{message}</div>
     )
 }
 
-export default Notification;
+export default Alert;
