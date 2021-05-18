@@ -1,5 +1,14 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+
+
+implemented (via React Hooks):
+1. adding / deleteing / editing items
+2. input validation
+3. ability to remove all items
+4. notification when item removed / added / editing
+5. all notes stored to localstorage
+
 ## Available Scripts
 
 In the project directory, you can run:
