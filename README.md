@@ -2,7 +2,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 
 
-implemented (via React Hooks):
+implemented (via React Hooks, React Icons):
 1. adding / deleteing / editing items
 2. input validation
 3. ability to remove all items
